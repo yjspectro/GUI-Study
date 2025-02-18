@@ -1,4 +1,4 @@
-# Change appearance mode by True ↔ False
+# Change the Appearance Mode by True ↔ False
 ## 1. Use clicking button
 ```
 import customtkinter as ctk
