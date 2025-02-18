@@ -1,4 +1,6 @@
-## Generate the text and the button (window size reactive)
+##Generate window with text + button (size reactive)
+#Author: yjspectro
+
 import customtkinter as ctk
 
 # Theme setup
