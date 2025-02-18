@@ -1,0 +1,43 @@
+## Generate the text and the button (window size reactive)
+import customtkinter as ctk
+
+# Theme setup
+ctk.set_appearance_mode("dark") #light or dark
+ctk.set_default_color_theme("blue")
+
+# Generate main window ("root window")
+root = ctk.CTk()
+root.geometry("400x200")
+root.title("CustomTkinter example - button making")
+
+#Base font sizes
+base_font_size = 18
+base_font_size_button = 20
+
+# Add label
+label = ctk.CTkLabel(root, text="Hello, CustomTkinter!", font=("Times New Roman", base_font_size))
+label.place(relx=0.5, rely=0.2, anchor="center")
+
+# Add button
+def button_callback():
+    label.configure(text="The button is clicked!")
+
+button = ctk.CTkButton(root, text="Click!", font=("Arial", base_font_size_button), command=button_callback)
+button.place(relwidth=0.5, relheight=0.2,relx=0.5, rely=0.6, anchor="center") #relative size of the button
+
+#Resize font function (adjusts both label & button text)
+def resize_font(event):
+    new_size = int(root.winfo_width() * 0.05) #reltaive size of the text
+    new_size = max(10, new_size) #lower limit of the text
+    label.configure(font=("Times New Roman", new_size))
+
+    new_size_button = int(root.winfo_width() * 0.06) 
+    new_size_button = max(12, new_size_button)
+    button.configure(font=("Arial", new_size_button))
+
+
+#Bind window resizing event
+root.bind("<Configure>",resize_font)
+
+# Run
+root.mainloop()
